@@ -3,6 +3,7 @@
     public partial class MainPage : ContentPage
     {
         int count = 0;
+        string caminho = Path.Combine (FileSystem.AppDataDirectory, "nota.txt");
 
         public MainPage() //metodo construtor
         {
@@ -23,6 +24,8 @@
 
         private void AoClicarSalvar(object? sender, EventArgs e)
         {
+            string conteudo = NotasEditor.Text;
+            File.WriteAllText(caminho, conteudo);
             
         }
 
@@ -33,7 +36,7 @@
 
         private void AoClicarCarregar(object? sender, EventArgs e)
         {
-
+          
         }
 
     }       

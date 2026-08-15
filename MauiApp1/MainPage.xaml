@@ -26,6 +26,10 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="AoClicarCarregar"
                 HorizontalOptions="Fill" />
+            <Editor 
+                x:Name="NotasEditor"
+                                
+                />
         </VerticalStackLayout>
     </ScrollView>
 
