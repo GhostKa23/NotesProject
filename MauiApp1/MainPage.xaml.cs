@@ -36,7 +36,10 @@
 
         private void AoClicarCarregar(object? sender, EventArgs e)
         {
-          
+            //string conteudo = NotasEditor.Text;
+            //File.ReadAllText(caminho);
+            string conteudo = File.ReadAllText(caminho);
+            NotasEditor.Text = conteudo;
         }
 
     }       
