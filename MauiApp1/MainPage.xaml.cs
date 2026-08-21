@@ -3,7 +3,7 @@
     public partial class MainPage : ContentPage
     {
         int count = 0;
-        string caminho = Path.Combine (FileSystem.AppDataDirectory, "nota.txt");
+        string caminho = Path.Combine(FileSystem.AppDataDirectory, "nota.txt");
 
         public MainPage() //metodo construtor
         {
@@ -26,25 +26,31 @@
         {
             string conteudo = NotasEditor.Text;
             File.WriteAllText(caminho, conteudo);
-            
+
         }
 
         private void AoClicarApagar(object? sender, EventArgs e)
         {
-
+            if (File.Exists(caminho))
+            {
+                File.Delete(caminho);
+            }
         }
+
 
         private void AoClicarCarregar(object? sender, EventArgs e)
         {
-            //string conteudo = NotasEditor.Text;
-            //File.ReadAllText(caminho);
-            string conteudo = File.ReadAllText(caminho);
-            NotasEditor.Text = conteudo;
-        }
+            if (File.Exists(caminho))
+            {
+                string conteudo = File.ReadAllText(caminho);
+                NotasEditor.Text = conteudo;
+            }
 
-    }       
-}           
-            
+
+
+        }
+    }
+}
             
             
  // modificadores de acesso privado e publico || void = metodo sem retorno
