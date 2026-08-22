@@ -1,4 +1,6 @@
-﻿namespace MauiApp1
+﻿using System.Diagnostics;
+
+namespace MauiApp1
 {
     public partial class MainPage : ContentPage
     {
@@ -38,14 +40,19 @@
         }
 
 
-        private void AoClicarCarregar(object? sender, EventArgs e)
+        private void AoClicarCarregar(object? sender, EventArgs e) //o app vai crashar se ele tentar carregar um arquivo que não existe,  então colocamos a condição if para verificar se existe um arquivo.
         {
-            if (File.Exists(caminho))
-            {
+            try// quando ele tentar rodar o codigo
+               {
                 string conteudo = File.ReadAllText(caminho);
                 NotasEditor.Text = conteudo;
             }
 
+            catch (Exception ex) //vai pegar a excessao/erro que for lançada. exessão so acontece com o codigo rodando
+            {
+                Debug.WriteLine(ex.Message);
+                 DisplayAlertAsync("Aviso", "Você tentou carregar um arquivo inexistente. Crie um arquivo e salve", "OK", "ok em minusculo");
+            }
 
 
         }
